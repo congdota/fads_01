@@ -11,11 +11,11 @@
 	<constant name="struts.multipart.maxSize" value="1000000" />
 	<!-- Define default-web package: struts-default -->
 	<package name="default-web" namespace="/" extends="struts-default">
+	
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" default="true" />
 		</result-types>
-
 		<action name="index" class="userAction" method="index">
 			<result name="success">index</result>
 		</action>
@@ -32,6 +32,7 @@
 			<result name="success" type="redirect">/index</result>
 			<result name="input">addUser</result>
 		</action>
+		
 	</package>
 
 	<package name="client" namespace="/" extends="struts-default">

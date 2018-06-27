@@ -32,14 +32,6 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
-	public UserDAO getUserDAO() {
-		return userDAO;
-	}
-
-	public void setUserDAO(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
-
 	@Override
 	public User findById(Integer id) {
 		try {
