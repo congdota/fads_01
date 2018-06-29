@@ -2,12 +2,14 @@ package com.framgia.action;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 
 import com.framgia.model.User;
 import com.framgia.service.UserService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends ActionSupport {
@@ -22,6 +24,37 @@ public class UserAction extends ActionSupport {
 	private String fileUploadContentType;
 	private String fileUploadFileName;
 	private String confirmPassword;
+	private String currentPass;
+	private String newPass;
+	private String reenterPass;
+	private Map<String, Object> sessionAttributes;
+
+	public String execute() {
+		return SUCCESS;
+	}
+
+	public String changePasswordAction() {
+		return SUCCESS;
+	}
+
+	@SuppressWarnings("unchecked")
+	public String changepassword() {
+		Map<String, Object> session = (Map<String, Object>) ActionContext.getContext().get("session");
+
+		user = (User) session.get("USER");
+		if (changePassValidate()) {
+			return INPUT;
+		}
+		User us = userService.findByUsername(user.getUsername());
+		if (us == null) {
+			return INPUT;
+		}
+
+		us.setPassword(newPass);
+		userService.saveOrUpdate(us);
+		session.put("USER", us);
+		return SUCCESS;
+	}
 
 	public String index() {
 		users = userService.findAll();
@@ -30,6 +63,10 @@ public class UserAction extends ActionSupport {
 
 	public String detail() {
 		user = userService.findById(id);
+		return SUCCESS;
+	}
+
+	public String resetPassword() {
 		return SUCCESS;
 	}
 
@@ -48,31 +85,46 @@ public class UserAction extends ActionSupport {
 		}
 		return flag;
 	}
-	
+
 	public String saveOrUpdateUser() {
+		if (adduserValidate()) {
+			return INPUT;
+		}
 		if (saveFile()) {
-			userService.saveOrUpdate(user);		
+			userService.saveOrUpdate(user);
 		}
 		return SUCCESS;
 	}
 
-	public void validate() {
-		try {
-			if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())
-					|| StringUtils.isEmpty(user.getBirthday().toString()) || StringUtils.isEmpty(user.getFullname())
-					|| StringUtils.isEmpty(user.getAvatar())) {
-				addFieldError("user.username", getText("users.username.required"));
-				addFieldError("user.password", getText("users.password.required"));
-				addFieldError("user.birthday", getText("users.birthday.required"));
-				addFieldError("user.fullname", getText("users.fullname.required"));
-				addFieldError("user.avatar", getText("users.avatar.required"));
-			}
-			if (!user.getPassword().equals(confirmPassword)) {
-				addFieldError("confirmPassword", getText("users.confirmPassword.notEqual"));
-			}
-
-		} catch (NullPointerException ne) {
+	public boolean adduserValidate() {
+		if (StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())
+				|| StringUtils.isEmpty(user.getBirthday().toString()) || StringUtils.isEmpty(user.getFullname())
+				|| StringUtils.isEmpty(user.getAvatar())) {
+			addFieldError("user.username", getText("users.username.required"));
+			addFieldError("user.password", getText("users.password.required"));
+			addFieldError("user.birthday", getText("users.birthday.required"));
+			addFieldError("user.fullname", getText("users.fullname.required"));
+			addFieldError("user.avatar", getText("users.avatar.required"));
+			return true;
 		}
+		return false;
+	}
+
+	boolean changePassValidate() {
+		if (StringUtils.isEmpty(currentPass) || StringUtils.isEmpty(newPass) || StringUtils.isEmpty(reenterPass)
+				|| currentPass != user.getPassword() || reenterPass != newPass) {
+			addFieldError("currentPass", getText("users.password.equalCurrentPass"));
+			addFieldError("currentPass", getText("users.password.currentPass.required"));
+			addFieldError("newPass", getText("users.password.newPass.required"));
+			addFieldError("reenterPass", getText("users.password.reEnterPass.required"));
+			addFieldError("reenterPass", getText("users.password.equalNewpass"));
+			return true;
+		}
+		return false;
+	}
+
+	public UserService getUserService() {
+		return userService;
 	}
 
 	public void setUserService(UserService userService) {
@@ -143,4 +195,35 @@ public class UserAction extends ActionSupport {
 		this.confirmPassword = confirmPassword;
 	}
 
+	public String getCurrentPass() {
+		return currentPass;
+	}
+
+	public void setCurrentPass(String currentPass) {
+		this.currentPass = currentPass;
+	}
+
+	public String getNewPass() {
+		return newPass;
+	}
+
+	public void setNewPass(String newPass) {
+		this.newPass = newPass;
+	}
+
+	public String getReenterPass() {
+		return reenterPass;
+	}
+
+	public void setReenterPass(String reenterPass) {
+		this.reenterPass = reenterPass;
+	}
+
+	public Map<String, Object> getSessionAttributes() {
+		return sessionAttributes;
+	}
+
+	public void setSessionAttributes(Map<String, Object> sessionAttributes) {
+		this.sessionAttributes = sessionAttributes;
+	}
 }

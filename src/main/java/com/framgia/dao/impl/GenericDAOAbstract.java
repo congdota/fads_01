@@ -61,5 +61,4 @@ public abstract class GenericDAOAbstract<T, PK extends Serializable> {
 		getSession().saveOrUpdate(entity);
 		return entity;
 	}
-
 }

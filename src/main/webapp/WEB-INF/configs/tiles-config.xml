@@ -27,6 +27,25 @@
 		<put-attribute name="cssAdd" value="" />
 		<put-attribute name="footer" value="/client/layouts/footer.jsp" />
 	</definition>
+	
+	<!-- Login -->
+	<definition name="loginViews" template="/login.jsp">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="jsDefault" value="" />
+		<put-list-attribute name="cssDefault">
+			<add-attribute value="/assets/css/bootstrap.min.css" />
+		</put-list-attribute>
+		<put-list-attribute name="cssAdd">
+			<add-attribute value="/assets/css/custom.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsDefault">
+			<add-attribute value="/assets/js/jquery-1.11.1.min.js" />
+			<add-attribute value="/assets/js/bootstrap.min.js" />
+		</put-list-attribute>
+		<put-list-attribute name="jsAdd">
+			<add-attribute value="/assets/js/custom.js" />
+		</put-list-attribute>
+	</definition>
 
 	<!-- list users -->
 	<definition name="index" extends="base.definition">
@@ -53,6 +72,25 @@
 		</put-list-attribute>
 		<put-list-attribute name="cssAdd">
 			<add-attribute value="/assets/css/custom.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsAdd">
+			<add-attribute value="/assets/js/custom.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="changePass" extends="base.definition">
+		<put-attribute name="title" value="Change Password" />
+		<put-attribute name="screenname" value="Change Password" />
+		<put-attribute name="body" value="/admin/users/changePassword.jsp" />
+		<put-list-attribute name="cssDefault">
+			<add-attribute value="/assets/css/bootstrap.min.css" />
+		</put-list-attribute>
+		<put-list-attribute name="cssAdd">
+			<add-attribute value="/assets/css/custom.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsDefault">
+			<add-attribute value="/assets/js/jquery-1.11.1.min.js" />
+			<add-attribute value="/assets/js/bootstrap.min.js" />
 		</put-list-attribute>
 		<put-list-attribute name="jsAdd">
 			<add-attribute value="/assets/js/custom.js" />

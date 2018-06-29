@@ -18,8 +18,8 @@
 *.zip
 *.tar.gz
 *.rar
-
 .settings/
+/src/main/resources/database-config.properties
 
 target/*
 src/main/resources/database-config.properties

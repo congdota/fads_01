@@ -10,5 +10,5 @@ public interface BaseDAO<T,PK> {
 	public T findBy(String atribute, Serializable key);
 	
 	public T saveOrUpdate(T entity);
-
+	
 }

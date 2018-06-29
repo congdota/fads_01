@@ -30,12 +30,19 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 
+	public String logout() throws Exception {
+		if (this.sessionAttributes.containsKey("USER")) {
+			this.sessionAttributes.remove("USER");
+		}
+		return SUCCESS;
+	}
+
 	public void validate() {
 		if (StringUtils.isEmpty(username)) {
-			addFieldError("username", getText("username.required"));
+			addFieldError("username", getText("users.username.required"));
 		}
 		if (StringUtils.isEmpty(password)) {
-			addFieldError("password", getText("password.required"));
+			addFieldError("password", getText("users.password.required"));
 		}
 	}
 

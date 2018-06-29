@@ -15,6 +15,14 @@ public class UserServiceImpl implements UserService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 	private UserDAO userDAO;
 
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
 	@Override
 	public List<User> findAll() {
 		return getUserDAO().findAll();
@@ -46,7 +54,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User saveOrUpdate(User user) {
 		try {
-			if(user.getCreatedDate()==null){
+			if (user.getCreatedDate() == null) {
 				user.setCreatedDate(new Date());
 			}
 			LOGGER.info("Save user successful");
@@ -56,5 +64,16 @@ public class UserServiceImpl implements UserService {
 			throw e;
 		}
 	}
-	
+
+	@Override
+	public User findByUsername(String username) {
+		User user = null;
+		try {
+			user = userDAO.findBy("username", username);
+		} catch (Exception e) {
+			LOGGER.error("Khong tim thay user");
+		}
+		return user;
+	}
 }
+

@@ -2,7 +2,7 @@
 <%@ taglib prefix="sx" uri="/struts-dojo-tags"%>
 <div class="row">
 	<s:form action="saveOrUpdateUser" method="post" id="formUser"
-		validate="true" enctype="multipart/form-data">
+		 enctype="multipart/form-data">
 		<div class="form-group">
 			<s:textfield name="user.id" type="hidden" class="form-control"></s:textfield>
 		</div>

@@ -29,12 +29,12 @@
 			<result name="success">addUser</result>
 		</action>
 
-		<action name="saveOrUpdateUser" class="userAction" method="saveOrUpdateUser">
+		<action name="addUser" class="userAction" method="saveOrUpdateUser">
 			<result name="success" type="redirect">/index</result>
 			<result name="input">addUser</result>
 		</action>
 		
-		<action name="changepassword" class="userAction" method="changepassword" >
+		<action name="updatePassword" class="userAction" method="updatePassword" >
 			<result name="success" type="redirect">/index</result>
 			<result name="input">changePass</result>
 		</action>
@@ -44,13 +44,6 @@
 		</action>	
 	</package>
 	
-	<package name="users" namespace="users" extends="struts-default">
-		<action name="changepassword" class="userAction" method="changepassword" >
-			<result name="success" type="redirect">/index</result>
-			<result name="input">addUser</result>
-		</action>
-	</package>
-
 	<package name="client" namespace="/" extends="struts-default">
 		<result-types>
 			<result-type name="tiles"
@@ -71,6 +64,10 @@
 	</package>
 
 	<package name="user" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" default="true" />
+		</result-types>
 		<interceptors>
 			<interceptor name="authentication"
 				class="com.framgia.interceptors.AuthenticationInterceptor"></interceptor>
@@ -82,7 +79,7 @@
 		<default-interceptor-ref name="authStack"></default-interceptor-ref>
 		<action name="home">
 			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result>/login.jsp</result>
+			<result>loginViews</result>
 		</action>
 		<action name="logout" class="loginAction" method="logout">
 			<result name="success">/login.jsp</result>
@@ -93,8 +90,7 @@
 				<param name="actionName">homepage</param>
 				<param name="namespace">/</param>
 			</result>
-			<result name="input">/login.jsp</result>
+			<result name="input">loginViews</result>
 		</action>
-
 	</package>
 </struts>
