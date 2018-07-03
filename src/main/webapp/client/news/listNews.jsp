@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<<<<<<< 514284cb26c19d394885cbc3abe80cedf157f916
 <div class="row">
 	<div class="row" id="search">
 		<form id="search-form" action="" method="POST"
@@ -70,3 +71,10 @@
 	</div>
 	<div class="col-md-4"></div>
 </div>
+=======
+<h2><s:text name="client.list.new" /></h2>
+<s:iterator value="subCategory">
+	<s:a>${tittle}</s:a>
+	<s:a>${startDate}</s:a>	
+</s:iterator>
+>>>>>>> Get list News follow Category

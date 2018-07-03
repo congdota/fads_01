@@ -68,6 +68,9 @@
 		<action name="news-detail" class="newsAction" method="findByNewId">
 			<result name="success">news-detail</result>
 		</action>
+		<action name="detail-news" class="categoryAction" method="getNews">
+			<result name="success">new-detail</result>
+		</action>
 	</package>
 
 	<package name="user" namespace="/" extends="struts-default">

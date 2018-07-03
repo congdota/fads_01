@@ -1,3 +1,4 @@
+<<<<<<< 514284cb26c19d394885cbc3abe80cedf157f916
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <nav class="navbar navbar-default navbar-static-top">
 	<div class="container-fluid">
@@ -47,3 +48,6 @@
 	</div>
 	<!-- /.container-fluid -->
 </nav>
+=======
+<h1>HEADER</h1>
+>>>>>>> Get list News follow Category
