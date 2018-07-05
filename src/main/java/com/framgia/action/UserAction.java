@@ -7,7 +7,10 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 
+import com.framgia.model.Category;
+import com.framgia.model.News;
 import com.framgia.model.User;
+import com.framgia.service.CategoryService;
 import com.framgia.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,6 +31,9 @@ public class UserAction extends ActionSupport {
 	private String newPass;
 	private String reenterPass;
 	private Map<String, Object> sessionAttributes;
+	private News news;
+	private CategoryService categoryService;
+	private List<Category> categories;
 
 	public String execute() {
 		return SUCCESS;
@@ -225,5 +231,29 @@ public class UserAction extends ActionSupport {
 
 	public void setSessionAttributes(Map<String, Object> sessionAttributes) {
 		this.sessionAttributes = sessionAttributes;
+	}
+
+	public News getNews() {
+		return news;
+	}
+
+	public void setNews(News news) {
+		this.news = news;
+	}
+
+	public CategoryService getCategoryService() {
+		return categoryService;
+	}
+
+	public void setCategoryService(CategoryService categoryService) {
+		this.categoryService = categoryService;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 }

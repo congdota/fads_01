@@ -42,7 +42,7 @@
         <h2 class="text-center">Log in</h2>       
         <div class="form-group">
         	<label></label>
-        	<s:textfield name="users.index.username" class="form-control" placeholder="Username" />
+        	<s:textfield name="username" class="form-control" placeholder="Username" />
        		<s:fielderror fieldName="username" />
         </div>
         <div class="form-group">
