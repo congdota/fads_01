@@ -81,29 +81,11 @@
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" default="true" />
 		</result-types>
-		<interceptors>
-			<interceptor name="authentication"
-				class="com.framgia.interceptors.AuthenticationInterceptor"></interceptor>
-			<interceptor-stack name="authStack">
-				<interceptor-ref name="authentication"></interceptor-ref>
-				<interceptor-ref name="defaultStack"></interceptor-ref>
-			</interceptor-stack>
-		</interceptors>
-		<default-interceptor-ref name="authStack"></default-interceptor-ref>
-		<action name="home">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result>loginViews</result>
-		</action>
-		<action name="logout" class="loginAction" method="logout">
-			<result name="success">/login.jsp</result>
-		</action>
-		<action name="login" class="loginAction">
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-			<result name="success" type="redirectAction">
-				<param name="actionName">homepage</param>
-				<param name="namespace">/</param>
-			</result>
-			<result name="input">loginViews</result>
-		</action>
+        <action name="login">
+        	<result>loginViews</result>
+        </action>
+        <action name="managerUser" class="com.framgia.action.ManagerUser" method="execute">
+            <result name="success">/admin/users/test.jsp</result>
+        </action>
 	</package>
 </struts>

@@ -1,5 +1,7 @@
 package com.framgia.dao.impl;
 
+import java.util.Optional;
+
 import com.framgia.dao.UserDAO;
 import com.framgia.model.User;
 
@@ -10,5 +12,12 @@ public class UserDAOImpl extends GenericDAOAbstract<User, Integer> implements Us
 
 		return (User) getSession().createQuery("from User where username=:username and password=:password")
 				.setParameter("username", username).setParameter("password", password).uniqueResult();
+	}
+
+	@Override
+	public Optional<User> findByUsername(String username) {
+		User user = (User) getSession().createQuery("from User where username=:username")
+				.setParameter("username", username).uniqueResult();
+		return Optional.ofNullable(user);
 	}
 }

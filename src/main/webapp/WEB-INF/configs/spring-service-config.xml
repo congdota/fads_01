@@ -9,6 +9,8 @@
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+	<bean id="userDetailsService" class="com.framgia.service.impl.UserDetailServiceImpl" />
+
 	<bean id="userService" parent="transactionProxyTemplate">
 		<property name="target">
 			<bean class="com.framgia.service.impl.UserServiceImpl">
