@@ -84,8 +84,8 @@
 			<result name="success" type="redirect">/logout.action</result>
 			<result name="input">changePass</result>
 		</action>
-
-		<action name="home" class="categoryAction" method="index">
+		
+		<action name="homepage" class="categoryAction" method="index">
 			<result name="success">home</result>
 			<result name="error">/errors/404.jsp</result>
 		</action>

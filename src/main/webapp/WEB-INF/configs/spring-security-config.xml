@@ -12,6 +12,7 @@
 		<intercept-url pattern="/logout" access="isAuthenticated()" />
 
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		
 
 		<intercept-url pattern="/assets/**" access="permitAll" />
 		<intercept-url pattern="/welcome"
@@ -23,6 +24,7 @@
 			authentication-failure-handler-ref="customizeRedirectFailedHandler"
 			username-parameter="username" password-parameter="password" />
 		<logout logout-url="/logout" logout-success-url="/login"
+
 			delete-cookies="JSESSIONID" invalidate-session="true"/>
 		<csrf disabled="false"/>
 	</http>
