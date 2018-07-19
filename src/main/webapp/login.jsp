@@ -87,9 +87,10 @@
 						<div class="form-group">
 							<div class="col-md-12 control">
 								<div class="s-link-register">
-									Don't have an account! <a href="#"
-										onClick="$('#loginbox').hide(); $('#signupbox').show()">
-										Sign Up Here </a>
+									<s:url action="signUpAction" var="signUpUrl"></s:url>
+									<s:a href="%{signUpUrl}">
+										<s:text name="users.action.signUp" />
+									</s:a>
 								</div>
 							</div>
 						</div>

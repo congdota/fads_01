@@ -27,6 +27,12 @@
 			<result name="success" type="tiles">login-page</result>
 			<result name="error" type="tiles">login-page</result>
 		</action>
+		
+		<action name="signUpAction">
+			<result>signUp-page</result>
+		</action>
+		
+		
 
 		<action name="welcome" class="com.framgia.action.CustomSessionAction">
 			<result name="SUCCESS_ADMIN" type="redirect">/admin/index</result>
@@ -37,6 +43,18 @@
 		<action name="logout">
 			<result name="success" type="tiles">login-page</result>
 		</action>
+		
+		<action name="signUp" class="signUpAction" method="addUser">
+			<result name="success" type="redirect">login-page</result>
+			<result name="input">signUp-page</result>
+			<result name="error">/errors/404.jsp</result>
+		</action>
+		
+		<!-- <action name="signUp" class="signUpAction" method="addUser">
+			<result name="success" type="redirect">/login-page</result>
+			<result name="input">signUp-page</result>
+			<result name="error">/errors/404.jsp</result>
+		</action> -->
 
 	</package>
 

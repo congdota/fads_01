@@ -51,6 +51,9 @@
 	<welcome-file-list>
 		<welcome-file>/login.action</welcome-file>
 	</welcome-file-list>
+	<!-- <welcome-file-list>
+		<welcome-file>/signUp.jsp</welcome-file>
+	</welcome-file-list> -->
 	
 	<!--Exception Handling-->
     <error-page>

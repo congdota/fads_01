@@ -121,19 +121,25 @@
 		</put-list-attribute>
 	</definition>
 
-	<definition name="addUser" extends="base.definition">
-		<put-attribute name="title" value="List" />
-		<put-attribute name="screenname" value="List User" />
-		<put-attribute name="body" value="/admin/users/addUser.jsp" />
+	<!-- Sign Up -->
+	<definition name="signUp-page" template="/signUp.jsp">
+		<put-attribute name="title" value="Sign Up" />
+		<put-attribute name="jsDefault" value="" />
 		<put-list-attribute name="cssDefault">
 			<add-attribute value="/assets/css/bootstrap.min.css" />
 		</put-list-attribute>
 		<put-list-attribute name="cssAdd">
 			<add-attribute value="/assets/css/custom.css" />
+			<add-attribute value="/assets/css/style-login.css" />
+		</put-list-attribute>
+		<put-list-attribute name="jsDefault">
+			<add-attribute value="/assets/js/jquery-1.11.1.min.js" />
+			<add-attribute value="/assets/js/bootstrap.min.js" />
 		</put-list-attribute>
 		<put-list-attribute name="jsAdd">
 			<add-attribute value="/assets/js/custom.js" />
 		</put-list-attribute>
+
 	</definition>
 	
 	<definition name="home" extends="client-base.definition">

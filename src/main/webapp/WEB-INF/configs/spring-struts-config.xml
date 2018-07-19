@@ -12,6 +12,10 @@
 		<property name="userService" ref="userService" />
 	</bean>
 	
+	<bean id="signUpAction" class="com.framgia.action.UserClientAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	
 	<bean id="categoryAction" class="com.framgia.action.CategoryAction" scope="prototype">
 		<property name="categoryService" ref="categoryService" />
 		<property name="newsService" ref="newsService" />

@@ -38,10 +38,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	public void validate() {
 		if (StringUtils.isEmpty(username)) {
-			addFieldError("username", getText("users.username.required"));
+			addFieldError("user.username", getText("users.username.required"));
 		}
 		if (StringUtils.isEmpty(password)) {
-			addFieldError("password", getText("users.password.required"));
+			addFieldError("user.password", getText("users.password.required"));
 		}
 	}
 
